@@ -1,7 +1,7 @@
 import './App.css';
 import Register from './Components/Register'
 import React, { Component }  from 'react';
-import AppRouter from '../src/AppRouter'
+import AppRouter from '../src/AppRouter';
 
 function App() {
   return (
@@ -17,10 +17,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Login 
+          {/* Login  */}
         </a>
         <div className='register'>
-          <Register />
+          {/* <Register /> */}
         </div>
       </header>
     </div>

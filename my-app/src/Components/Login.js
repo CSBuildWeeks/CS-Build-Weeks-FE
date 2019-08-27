@@ -35,7 +35,7 @@ export default function Login(props) {
               console.log(res.data);
             if (res.status === 200 && res.data) {
               localStorage.setItem('jwt', res.data.token)
-              props.history.push('http://localhost:3000/')
+              props.history.push('/world')
             }
           })
           .catch(err => {

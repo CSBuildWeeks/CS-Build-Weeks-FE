@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import Login from './Components/Login';
 import Register from './Components/Register';
+import World from './Components/World';
 
 
 // const StyledContainer = styled.div`
@@ -20,9 +21,10 @@ export default function AppRouter() {
 
     return <div className="page-view-ui">
         <Switch>
-            <Route path='/sign-up' component={Register}/>
-            <Route exact path='/' component={Login}/>
+            <Route path='/register' component={Register}/>
+            <Route exact path='/login' component={Login}/>
             <Route path='/home' component={() => window.location.href = 'https:netifysitehere'}/>
+            <Route path='/world' component={World}/>
         </Switch>
     </div>
 }

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 
-const Login = (props) => {
+const Register = (props) => {
 
     const [inputs, setInputs] = useState({ password1:'', password2:'', username: ''});
 
@@ -14,7 +14,7 @@ const Login = (props) => {
         .then(response => {
           console.log('user', response.data.token)
           localStorage.setItem('token', response.data.token)
-          props.history.push('/http://localhost:3000/')
+          props.history.push('/login')
         })
   
         .catch(error => {
@@ -59,12 +59,12 @@ const Login = (props) => {
             </div>
             <Button type = 'submit' >Sign Up</Button>
         </Form>
-        <Previous class = "previous">Already Have an Account? <Link to = '/'>Login Here</Link></Previous>
+        <Previous class = "previous">Already Have an Account? <Link to = '/'>Register Here</Link></Previous>
         </Content>
     )
 }
 
-export default Login;
+export default Register;
 
 ///Styled Components
 
