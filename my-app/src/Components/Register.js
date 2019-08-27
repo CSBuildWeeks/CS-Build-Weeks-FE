@@ -1,4 +1,4 @@
-import React, { Component,useState } from 'react';
+import React, { Component} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -17,7 +17,7 @@ export default class Registration extends Component {
 
         this.state = {
             username: "",
-            email: "",
+            // email: "",
             password1: "",
             password2: "",
             // password_confirmation: "",
@@ -34,39 +34,41 @@ export default class Registration extends Component {
         })
     }
 
-    handleSubmit(e) {
-
-        const {
-            username,
-            password1,
-            password2,
-            email
-            // password_confirmation
-        } = this.state;
+    handleSubmit = (e) => {
+        console.log('in submit')
+        const test = 'https://lambda-mud-test.herokuapp.com';
+        // const {
+        //     username,
+        //     password1,
+        //     password2,
+        //     email
+        //     // password_confirmation
+        // } = this.state;
         e.preventDefault();
 
-        axios.post("https://lambda-mud-test.herokuapp.com/api/registration/", {
+        axios({
+            url: `${test}/api/registration/`,
+            method: 'POST',
             data: {
-                username: username,
-                email: email,
-                password1: password1,
-                password2: password2
+                username: `${this.state.username}`,
+                // email: `${this.state.email}`,
+                password1: `${this.state.password1}`,
+                password2: `${this.state.password2}`
                 // password_confirmation: password_confirmation
             },
             headers: {
                 'Content-Type': 'application/json'
             }
-        }
-        ).then(response => {
-            console.log('registration res', response);
-            const token = response.data["key"];
-            localStorage.setItem("token", `${token}`);
-            this.props.history.push('/adventure')
-        }).catch(error => {
-            console.log('registration error', error.response);
+        }).then(res => {
+            console.log("registration res", res);
+            // const token = response.data["key"];
+            // localStorage.setItem("token", `Token ${token}`);
+            // this.props.history.push('/adventure');
+        }).catch(err => {
+            console.log('registration error', err.res);
         });
         
-    }
+    };
 
     render() {
         return (
@@ -80,13 +82,13 @@ export default class Registration extends Component {
                         onChange={this.handleChange} 
                         required
                     />
-                    <input 
+                    {/* <input 
                         type='email' 
                         name='email' 
                         placeholder="E-mail" 
                         value = {this.state.email} 
                         onChange={this.handleChange} 
-                    />
+                    /> */}
                     <input 
                         type='password' 
                         name='password1' 
