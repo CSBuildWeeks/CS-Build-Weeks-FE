@@ -1,5 +1,5 @@
-import React, { Component,useState } from './node_modules/react';
-import axios from './node_modules/axios';
+import React, { Component,useState } from 'react';
+import axios from 'axios';
 
 
 const initialUser = {
