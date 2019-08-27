@@ -22,7 +22,6 @@ function App() {
         <div className='register'>
           <Register />
         </div>
-        
       </header>
     </div>
   );
