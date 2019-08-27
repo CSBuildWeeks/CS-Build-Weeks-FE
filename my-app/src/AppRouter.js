@@ -4,8 +4,8 @@ import axios from 'axios'
 import styled from 'styled-components';
 
 
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
+import Login from './Components/Login';
+import Register from './Components/Register';
 
 
 // const StyledContainer = styled.div`
