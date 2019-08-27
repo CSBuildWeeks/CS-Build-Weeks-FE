@@ -3,8 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import axios from 'axios'
 import styled from 'styled-components';
 
-import Login from './Components/Login/Login';
-import Register from './Components/Register/Register';
+
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 
 // const StyledContainer = styled.div`

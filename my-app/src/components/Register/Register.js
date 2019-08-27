@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component,useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -52,6 +52,9 @@ export default class Registration extends Component {
                 password1: password1,
                 password2: password2
                 // password_confirmation: password_confirmation
+            },
+            headers: {
+                'Content-Type': 'application/json'
             }
         }
         ).then(response => {
