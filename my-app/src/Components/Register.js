@@ -1,120 +1,131 @@
-import React, { Component} from 'react';
-import axios from 'axios';
+import React, { useState }from 'react';
 import styled from 'styled-components';
-
-/*********************** Styles ****************************************/
-
-const DivWrapper = styled.div`
-
-`;
+import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 
-/******************************** Components ***************************/
+const Login = (props) => {
 
-export default class Registration extends Component {
-    constructor(props) {
-        super(props);
+    const [inputs, setInputs] = useState({ password1:'', password2:'', username: ''});
 
-        this.state = {
-            username: "",
-            // email: "",
-            password1: "",
-            password2: "",
-            // password_confirmation: "",
-            registrationErrors: ""
-        }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
+    const registerUser = (newUser) => {
+        axios.post(`https://lambda-mud-test.herokuapp.com/api/registration/`,newUser)
+  
+        .then(response => {
+          console.log('user', response.data.token)
+          localStorage.setItem('token', response.data.token)
+          props.history.push('/http://localhost:3000/')
         })
+  
+        .catch(error => {
+          console.log('ERROR', error.response)
+        })
+      }
+
+    const handleSubmit = (event) => {
+        console.log('UserState: ', inputs)
+        if (event) {
+            event.preventDefault();
+         registerUser(inputs);     
+        }
+     
     }
 
-    handleSubmit = (e) => {
-        console.log('in submit')
-        const test = 'https://lambda-mud-test.herokuapp.com';
-        // const {
-        //     username,
-        //     password1,
-        //     password2,
-        //     email
-        //     // password_confirmation
-        // } = this.state;
-        e.preventDefault();
-
-        axios({
-            url: `${test}/api/registration/`,
-            method: 'POST',
-            data: {
-                username: `${this.state.username}`,
-                // email: `${this.state.email}`,
-                password1: `${this.state.password1}`,
-                password2: `${this.state.password2}`
-                // password_confirmation: password_confirmation
-            },
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            console.log("registration res", res);
-            // const token = response.data["key"];
-            // localStorage.setItem("token", `Token ${token}`);
-            // this.props.history.push('/adventure');
-        }).catch(err => {
-            console.log('registration error', err.res);
-        });
-        
-    };
-
-    render() {
-        return (
-            <DivWrapper>
-                <form onSubmit={this.handleSubmit}>
-                    <input 
-                        type='username' 
-                        name='username' 
-                        placeholder="Username" 
-                        value = {this.state.username} 
-                        onChange={this.handleChange} 
-                        required
-                    />
-                    {/* <input 
-                        type='email' 
-                        name='email' 
-                        placeholder="E-mail" 
-                        value = {this.state.email} 
-                        onChange={this.handleChange} 
-                    /> */}
-                    <input 
-                        type='password' 
-                        name='password1' 
-                        placeholder="Password1" 
-                        value = {this.state.password1} 
-                        onChange={this.handleChange} 
-                        required
-                    />
-                    <input 
-                        type='password' 
-                        name='password2' 
-                        placeholder="Password2" 
-                        value = {this.state.password2} 
-                        onChange={this.handleChange} 
-                        required
-                    />
-                    {/* <input 
-                        type='password' 
-                        name='password_confirmation' 
-                        placeholder="Password Confirmation" 
-                        value = {this.state.password_confirmation} 
-                        onChange={this.handleChange} 
-                        required
-                    /> */}
-                    <button type='submit'>Register</button>
-                </form>
-            </DivWrapper>);
+    const handleChange = (event) => {
+        event.persist();
+        setInputs(inputs => ({...inputs, [event.target.name] : event.target.value }))
     }
-};
+
+      
+    return (
+        <Content>
+        <Form onSubmit = {handleSubmit}>
+            <Legend>Create an Account</Legend>
+            <Span>It's free and only takes a minute</Span>
+           <div>
+   
+            <Inputs>
+            <label>Enter Your Username</label>
+                <Inputt type = 'username' name = 'username' onChange = {handleChange} value = {inputs.username} required/>
+            </Inputs>
+            <Inputs>
+            <label>Password1</label>
+                <Inputt type = 'password1' name = 'password1' onChange = {handleChange} value = {inputs.password1} required/>
+            </Inputs>
+            <Inputs>
+            <label>Password2</label>
+                <Inputt type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.password2} required/>
+            </Inputs>
+            </div>
+            <Button type = 'submit' >Sign Up</Button>
+        </Form>
+        <Previous class = "previous">Already Have an Account? <Link to = '/'>Login Here</Link></Previous>
+        </Content>
+    )
+}
+
+export default Login;
+
+///Styled Components
+
+const Form = styled.form`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background: #f1ffff;
+padding: 5px;
+margin:5px;
+border-radius: 8px;
+color: #1f4852;
+font-size: 20px;
+width: 40rem;
+margin-top: 7rem;
+
+`
+const Legend = styled.legend`
+font-size: 39px;
+margin: 26px;
+`
+
+const Button = styled.button`
+border-radius: 8px;
+border: none;
+color: white;
+padding: 15px 32px;
+margin: 15px;
+margin-top: 15px;
+background: #3C8C9E
+font-size: 1rem;
+`
+const Inputs = styled.div`
+margin: 5px;
+display: flex;
+flex-direction: column;
+`
+
+const Inputt = styled.input`
+border: solid 1.8px #aacddf;
+border-radius: 8px;
+width: 27rem;
+height: 2rem;
+`
+
+const Span = styled.span`
+margin-bottom: 15px;
+font-size: 19px;
+`
+const Content = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
+const Previous = styled.div`
+text-align: center;
+margin-top: 30px;
+margin-bottom: 6rem;
+font-size: 18px;
+color: #1f4852
+
+`
