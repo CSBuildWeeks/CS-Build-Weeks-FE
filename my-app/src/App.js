@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Register from './components/Register/Register'
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
         >
           Enter 
         </a>
+        <div className='register'>
+          <Register />
+        </div>
+        
       </header>
     </div>
   );
