@@ -1,6 +1,6 @@
-import React from 'react'
-import { Tab, Menu, Icon } from 'semantic-ui-react'
-import { NavLink } from "react-router-dom";
+import React from './node_modules/reacte_modules/react'
+import { Tab, Menu, Icon } from './node_modules/semantic-ui-reactmantic-ui-react'
+import { NavLink } from "./node_modules/react-router-domeact-router-dom";
 
 
 
