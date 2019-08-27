@@ -17,7 +17,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {/* Login  */}
+          Login 
         </a>
         <div className='register'>
           <Register />
