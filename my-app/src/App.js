@@ -1,12 +1,13 @@
 import './App.css';
-import Register from './Components/Register/Register'
+import Register from './Components/Register'
 import React, { Component }  from 'react';
+import AppRouter from '../src/AppRouter'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-      {/* <AppRouter /> */}
+      <AppRouter />
         <p>
           CS Build Week:  Multi-User Dungeon (MUD)
         </p>
