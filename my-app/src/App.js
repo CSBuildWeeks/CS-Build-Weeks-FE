@@ -1,6 +1,5 @@
 import './App.css';
-import AppRouter from '../src/AppRouter'
-import React, { useState } from 'react';
+import Register from './components/Register/Register'
 
 function App() {
   return (
@@ -18,6 +17,10 @@ function App() {
         >
           {/* Login  */}
         </a>
+        <div className='register'>
+          <Register />
+        </div>
+        
       </header>
     </div>
   );
