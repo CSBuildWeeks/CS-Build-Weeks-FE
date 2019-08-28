@@ -25,10 +25,9 @@ const moveLabel = createLabel("move", "Move")
 const panes = [
   { menuItem: <Menu.Item key='home' as={Nav} to={`/`} content={welcomeLabel} /> },
   { menuItem: <Menu.Item key='register' as={Nav} to={`/register`} content={signUpLabel} /> },
-
   { menuItem: <Menu.Item key='login' as={Nav} to={`/login`} content={loginLabel} /> },
-  { menuItem: <Menu.Item key='move' as={Nav} to={`/move`} content={moveLabel} /> }
-  { menuItem: <Menu.Item key='world' as={Nav} to={`/world`} content={worldLabel} /> }
+  { menuItem: <Menu.Item key='world' as={Nav} to={`/world`} content={worldLabel} /> },
+  { menuItem: <Menu.Item key='move' as={Nav} to={`/move`} content={moveLabel} /> },
 
 
 ]

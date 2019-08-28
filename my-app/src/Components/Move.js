@@ -6,24 +6,26 @@ class Move extends React.Component {
     constructor() {
         super();
         this.state = {
-            playerName: "",
-            roomTitle: "",
-            players:"",
-            uuid:"",
-            description:"",
-            rooms: [],
-            move: ""
+            // playerName: "",
+            // roomTitle: "",
+            // players:"",
+            // uuid:"",
+            // description:"",
+            // rooms: [],
+            // move: "",
+            direction: "",
+            direction: [],
     }
 }
     
     componentDidMount() {
-        this.start();
+        this.move();
     }
 
 
     move = () => {
         const token = localStorage.getItem('token'); 
-        console.log('localstorage in the world', localStorage.getItem('token'))
+        console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
             url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
             method: "POST",
@@ -33,8 +35,9 @@ class Move extends React.Component {
         })
             .then(res => {
                 this.setState({ 
-                    roomTitle: res.data.title,
-                    description: res.data.description,
+                    // roomTitle: res.data.title,
+                    // description: res.data.description,
+                    direction: res.data.direction,
                 }); 
                 console.log('Moving in the world', res)  
             })
@@ -46,11 +49,13 @@ class Move extends React.Component {
     render(){
         return(
             <ul>
-                <li>{this.state.playerName}</li>
+                {/* <li>{this.state.playerName}</li>
                 <li>{this.state.roomTitle}</li>
                 <li>{this.state.players}</li>
                 <li>{this.state.uuid}</li>
-                <li>{this.state.description}</li>
+                <li>{this.state.description}</li> */}
+                <li>{this.state.direction}</li>
+
 
 
             </ul>
