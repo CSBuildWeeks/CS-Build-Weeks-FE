@@ -23,7 +23,7 @@ class Move extends React.Component {
     }
 
 
-    move = () => {
+    move = (direction) => {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
@@ -31,6 +31,9 @@ class Move extends React.Component {
             method: "POST",
             headers: {
                 Authorization: token
+            },
+            data: {
+                direction: direction
             }
         })
             .then(res => {
