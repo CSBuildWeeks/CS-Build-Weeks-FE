@@ -7,6 +7,10 @@ import styled from 'styled-components';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import World from './Components/World';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 434414d1efc5396f671f26f25442f0308b7fa207
 import Move from './Components/Move';
 
 

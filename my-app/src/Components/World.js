@@ -79,4 +79,8 @@ class World extends React.Component {
     }
 };
 
+<<<<<<< HEAD
 export default World;
+=======
+export default World;
+>>>>>>> 434414d1efc5396f671f26f25442f0308b7fa207
