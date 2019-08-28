@@ -7,7 +7,9 @@ class World extends React.Component {
         this.state = {
             playerName: "",
             roomTitle: "",
-            players:""
+            players:"",
+            uuid:"",
+            description:"",
     }
 }
     
@@ -29,7 +31,9 @@ class World extends React.Component {
                 this.setState({ 
                     playerName: res.data.name,
                     roomTitle: res.data.title,
-                    players: res.data.players
+                    players: res.data.players,
+                    uuid: res.data.uuid,
+                    description: res.data.description,
                 }); 
                 console.log('res in the world', res)  
             })
@@ -44,6 +48,10 @@ class World extends React.Component {
                 <li>{this.state.playerName}</li>
                 <li>{this.state.roomTitle}</li>
                 <li>{this.state.players}</li>
+                <li>{this.state.uuid}</li>
+                <li>{this.state.description}</li>
+
+
             </ul>
         )
     }
