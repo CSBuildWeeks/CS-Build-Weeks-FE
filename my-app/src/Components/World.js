@@ -1,36 +1,52 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
 
-//
-// axios call to /adv/init to initialize world
-// display response info
-
-// Create an interface that displays the current room name, its description and the other players in the room
-
-
-export default class World extends React.Component {
-    state = {
-        players: ["Outside Cave Entrance", "Rosa's Room"]
+class World extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            playerName: "",
+            roomTitle: "",
+            players:""
     }
-
+}
+    
     componentDidMount() {
-        this.setState({ loading: true });
-        axios.get(`https://lambda-mud-test.herokuapp.com/api/adv/init/`)
-            .then(res => {
-                console.log('res', res);
-                this.setState({ players: res.data });
-                console.log('players', res.data)
-            }).catch(err => err.res)
+        this.start();
     }
+
+    start = () => {
+        const token = localStorage.getItem('token'); 
+        console.log('localstorage in the world', localStorage.getItem('token'))
+        axios({
+            url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
+            method: "GET",
+            headers: {
+                Authorization: token
+            }
+        })
+            .then(res => {
+                this.setState({ 
+                    playerName: res.data.name,
+                    roomTitle: res.data.title,
+                    players: res.data.players
+                }); 
+                console.log('res in the world', res)  
+            })
+            .catch(err => {
+                console.log('errors', err.response)
+            });
+    };
+
     render(){
         return(
-            <div>
-                <h1>In the world</h1>
-                <ul>
-                    {this.state.players.map(room => <li>{room.players}</li>)}
-                </ul>
-            </div>
+            <ul>
+                <li>{this.state.playerName}</li>
+                <li>{this.state.roomTitle}</li>
+                <li>{this.state.players}</li>
+            </ul>
         )
     }
 };
 
+export default World;

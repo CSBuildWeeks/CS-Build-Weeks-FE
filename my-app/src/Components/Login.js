@@ -34,7 +34,12 @@ export default function Login(props) {
           .then(res => {
               console.log(res.data);
             if (res.status === 200 && res.data) {
-              localStorage.setItem('jwt', res.data.token)
+              // localStorage.setItem('token', res.data.key)
+              const token = res.data.key
+              localStorage.setItem('token', `Token ${token}`)
+              // localStorage.setItem('Authorization', res.data.key)
+              console.log('localstorage', localStorage)
+              console.log('res.data.key?', res.data.key)
               props.history.push('/world')
             }
           })
