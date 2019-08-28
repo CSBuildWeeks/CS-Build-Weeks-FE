@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class World extends React.Component {
+class Move extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -11,6 +11,7 @@ class World extends React.Component {
             uuid:"",
             description:"",
             rooms: [],
+            move: ""
     }
 }
     
@@ -18,11 +19,12 @@ class World extends React.Component {
         this.start();
     }
 
-    start = () => {
+
+    move = () => {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the world', localStorage.getItem('token'))
         axios({
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
+            url: `https://lambda-mud-test.herokuapp.com/api/adv/rooms/`,
             method: "GET",
             headers: {
                 Authorization: token
@@ -30,10 +32,9 @@ class World extends React.Component {
         })
             .then(res => {
                 this.setState({ 
-                    playerName: res.data.name,
+                    // playerName: res.data.name,
                     roomTitle: res.data.title,
-                    players: res.data.players,
-                    uuid: res.data.uuid,
+                    // players: res.data.players,
                     description: res.data.description,
                 }); 
                 console.log('res in the world', res)  
@@ -42,7 +43,6 @@ class World extends React.Component {
                 console.log('errors', err.response)
             });
     };
-
 
     render(){
         return(
@@ -59,4 +59,4 @@ class World extends React.Component {
     }
 };
 
-export default World;
+export default Move;
