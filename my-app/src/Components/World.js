@@ -23,7 +23,6 @@ class World extends React.Component {
 
     start = () => {
         const token = localStorage.getItem('token'); 
-        console.log('localstorage in the world', localStorage.getItem('token'))
         axios({
             url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
             method: "GET",
