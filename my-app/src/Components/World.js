@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Move from "../Components/Move"
 
 class World extends React.Component {
     constructor() {

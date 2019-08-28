@@ -18,6 +18,8 @@ const welcomeLabel = createLabel("home", "Home")
 const signUpLabel = createLabel("signup", "Sign-Up")
 const loginLabel = createLabel("login", "Login")
 const worldLabel = createLabel("world", "World")
+const moveLabel = createLabel("move", "Move")
+
 
 
 const panes = [
@@ -25,7 +27,10 @@ const panes = [
   { menuItem: <Menu.Item key='register' as={Nav} to={`/register`} content={signUpLabel} /> },
 
   { menuItem: <Menu.Item key='login' as={Nav} to={`/login`} content={loginLabel} /> },
+  { menuItem: <Menu.Item key='move' as={Nav} to={`/move`} content={moveLabel} /> }
   { menuItem: <Menu.Item key='world' as={Nav} to={`/world`} content={worldLabel} /> }
+
+
 ]
 
 const TabNav = () => <Tab panes={panes} renderActiveOnly={false} />

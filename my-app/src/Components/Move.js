@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import World from "../Components/World"
 
 class Move extends React.Component {
     constructor() {
@@ -24,20 +25,18 @@ class Move extends React.Component {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the world', localStorage.getItem('token'))
         axios({
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/rooms/`,
-            method: "GET",
+            url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
+            method: "POST",
             headers: {
                 Authorization: token
             }
         })
             .then(res => {
                 this.setState({ 
-                    // playerName: res.data.name,
                     roomTitle: res.data.title,
-                    // players: res.data.players,
                     description: res.data.description,
                 }); 
-                console.log('res in the world', res)  
+                console.log('Moving in the world', res)  
             })
             .catch(err => {
                 console.log('errors', err.response)
