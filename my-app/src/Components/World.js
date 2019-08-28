@@ -17,7 +17,6 @@ class World extends React.Component {
 
     start = () => {
         const token = localStorage.getItem('token'); 
-        console.log('localstorage in the world', localStorage.getItem('token'))
         axios({
             url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
             method: "GET",
@@ -50,3 +49,15 @@ class World extends React.Component {
 };
 
 export default World;
+
+
+
+//Get the rooms from test server endpoint into a rooms list
+//for loop through rooms
+// case n:
+// if theres a room then go, if not then error message
+// case s:
+// if theres a room then go, if not then error
+// case e: 
+// etc... 
+// 
