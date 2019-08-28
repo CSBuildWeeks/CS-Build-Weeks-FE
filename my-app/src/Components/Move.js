@@ -27,7 +27,7 @@ class Move extends React.Component {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/move/n/`,
+            url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
             method: "POST",
             headers: {
                 Authorization: token
