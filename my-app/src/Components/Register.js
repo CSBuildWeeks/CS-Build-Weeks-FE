@@ -11,9 +11,11 @@ const Register = (props) => {
     const registerUser = (newUser) => {
         axios.post(`https://lambda-mud-test.herokuapp.com/api/registration/`,newUser)
   
-        .then(response => {
-          console.log('user', response.data.token)
-          localStorage.setItem('token', response.data.token)
+        .then(res => {
+        //   console.log('response.data.token', response.data.token)
+          console.log('response', res)
+          const token = res.data.key
+          localStorage.setItem('token', `Token ${token}`)
           props.history.push('/login')
         })
   
