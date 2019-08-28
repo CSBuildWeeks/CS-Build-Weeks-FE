@@ -7,6 +7,10 @@ class Map extends React.Component {
         super();
         this.state = {
             rooms : [],
+            // roomID: [],
+            // roomTitle: [],
+            // roomDesc: []
+
     }
 }
     
@@ -26,7 +30,10 @@ class Map extends React.Component {
         })
             .then(res => {
                 this.setState({ 
-                    rooms: JSON.parse(res.data.rooms)
+                    rooms: JSON.parse(res.data.rooms),
+                    // roomID: JSON.parse(res.data.rooms.pk),
+                    // roomTitle: JSON.parse(res.data.rooms.fields.title),
+                    // roomDesc: JSON.parse(res.data.rooms.fields.description)
                     // id: res.data.rooms.pk,
                     // roomTitle: res.data.rooms.fields.title,
                     // roomDesc: res.data.rooms.fields.description
