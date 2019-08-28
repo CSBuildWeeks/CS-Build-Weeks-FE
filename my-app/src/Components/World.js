@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import Move from "../Components/Move"
+import {Link} from 'react-router-dom'
+
 
 class World extends React.Component {
     constructor() {
@@ -10,6 +13,7 @@ class World extends React.Component {
             players:"",
             uuid:"",
             description:"",
+            rooms: [],
     }
 }
     
@@ -40,20 +44,39 @@ class World extends React.Component {
             .catch(err => {
                 console.log('errors', err.response)
             });
+            
     };
+
+
 
     render(){
         return(
+            
             <ul>
+
                 <li>{this.state.playerName}</li>
                 <li>{this.state.roomTitle}</li>
                 <li>{this.state.players}</li>
                 <li>{this.state.uuid}</li>
                 <li>{this.state.description}</li>
-
-
+                <div>
+      <Link to='/move'>
+      <button type="button" className="btn north">North</button>
+      </Link>
+      <Link to='/'>
+      <button type="button" className="btn south">South</button>
+      </Link>
+      <Link to='/move'>
+      <button type="button" className="btn east">East</button>
+      </Link>
+      <Link to='/move'>
+      <button type="button" className="btn west">West</button>
+      </Link>
+      </div>
             </ul>
+            
         )
+        
     }
 };
 
