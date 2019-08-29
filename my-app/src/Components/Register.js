@@ -22,7 +22,7 @@ const Register = (props) => {
           console.log('response', res)
           const token = res.data.key
           localStorage.setItem('token', `Token ${token}`)
-          props.history.push('/login')
+          props.history.push('/')
         })
   
         .catch(error => {
