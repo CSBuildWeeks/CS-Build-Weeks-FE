@@ -1,4 +1,4 @@
 [build] 
-base="expat-journal"
-publish="expat-journal/build/"
+base="cs20bw-treasure-hunt"
+publish="cs20bw/build/"
 command="yarn build"
