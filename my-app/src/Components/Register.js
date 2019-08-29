@@ -71,7 +71,7 @@ type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.
 
 export default Register;
 
-///Styled Components
+//Styled Components
 
 const Form = styled.form`
 display: flex;
