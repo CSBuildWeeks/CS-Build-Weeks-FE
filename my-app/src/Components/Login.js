@@ -32,7 +32,13 @@ export default function Login(props) {
         
   
         // add heruko api link here:
-        axios.post(`https://lambda-mud-test.herokuapp.com/api/login/`, user)
+        axios.post(
+
+        // uncomment this for heruko endpoint:
+        // `https://lambdamud-cs.herokuapp.com/api/adv/login/`, user
+          
+        `https://lambda-mud-test.herokuapp.com/api/login/`, user
+          )
           .then(res => {
               console.log(res.data);
             if (res.status === 200 && res.data) {

@@ -53,6 +53,8 @@ class World extends React.Component {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
+            // uncomment this forheruko enpoint:
+            // url: `https://lambdamud-cs.herokuapp.com/api/adv/move/`,
             url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
             method: "POST",
             headers: {

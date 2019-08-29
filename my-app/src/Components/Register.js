@@ -9,7 +9,13 @@ const Register = (props) => {
     const [inputs, setInputs] = useState({ password1:'', password2:'', username: ''});
 
     const registerUser = (newUser) => {
-        axios.post(`https://lambda-mud-test.herokuapp.com/api/registration/`,newUser)
+        axios.post(
+
+            // uncomment this for heruko endpoint:
+            // `https://lambdamud-cs.herokuapp.com/api/adv/register/`, newUser
+            
+            `https://lambda-mud-test.herokuapp.com/api/registration/`,newUser
+            )
   
         .then(res => {
         //   console.log('response.data.token', response.data.token)
