@@ -70,7 +70,7 @@ type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.
             </div>
             <Button type = 'submit' >Sign Up</Button>
         </Form>
-        <Previous class = "previous">Already Have an Account? <Link to = '/login'>Login Here</Link></Previous>
+        <Previous class = "previous">Already Have an Account? <Link to = '/'>Login Here</Link></Previous>
         </Content>
     )
 }

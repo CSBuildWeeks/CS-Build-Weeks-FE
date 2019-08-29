@@ -102,7 +102,7 @@ export default function Login(props) {
                     : undefined
                   } */}
               {/* </div> */}
-              <Previous class = "previous">Need an account? <Link to = '/sign-up'>Sign Up </Link></Previous>
+              <Previous class = "previous">Need an account? <Link to = '/register'>Sign Up </Link></Previous>
           </Content>
             );
           }
