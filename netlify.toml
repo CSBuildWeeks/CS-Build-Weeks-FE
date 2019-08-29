@@ -1,4 +1,4 @@
 [build] 
-base="cs20bw-treasure-hunt"
-publish="cs20bw/build/"
+base="CSBuildWeeks"
+publish="CSBuildWeeks/build/"
 command="yarn build"
