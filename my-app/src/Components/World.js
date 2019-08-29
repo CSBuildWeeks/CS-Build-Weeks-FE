@@ -9,11 +9,13 @@ class World extends React.Component {
         this.state = {
             playerName: "",
             startingRoom: "",
-            startingPlayers:"",
+            startingPlayers: [],
             userID:"",
             startingDescription:"",
             rooms: [],
             currentRoom: "",
+            currentDesc: "",
+            currentPlayers: [],
     }
 }
     
@@ -63,6 +65,9 @@ class World extends React.Component {
                 console.log('moving data', res.data);
                 this.setState({
                     currentRoom: res.data.title,
+                    currentDesc: res.data.description,
+                    currentPlayers: res.data.players
+
                 })
             })
             .catch(err => {
@@ -74,19 +79,23 @@ class World extends React.Component {
     render(){
         return(
            <div> 
-                {this.state.currentRoom ? 
+                {this.state.currentRoom 
+                ? 
                 <div>
-                    <p>Moved to: {this.state.currentRoom}</p>
+                    <h2>You have moved to: </h2>
+                    <p>{this.state.currentRoom}</p>
+                    <p>{this.state.currentDesc}</p>
+                    <p>Current players in this room: </p>
+                    <div>{this.state.currentPlayers.map(player =>(<li>{player}</li>))}</div>
                 </div> 
                 :
                 <div className='startRoom'>
-                    Starting Room: 
-                    <li>{this.state.playerName}</li>
-                    <li>{this.state.startingRoom}</li>
-                    <li>{this.state.startingPlayers}</li>
-                    <li>{this.state.userID}</li>
-                    <li>{this.state.startingDescription}</li>
-                    
+                    <h2>Starting Room: </h2>
+                    <p>Player ID: {this.state.userID}</p>
+                    <p>Player: {this.state.playerName}</p>
+                    <p>Room: {this.state.startingRoom}</p>
+                    <p>{this.state.startingDescription}</p>
+                    <div>Players currently in the room: {this.state.startingPlayers.map(player =>(<li>{player}</li>))}</div>  
                 </div>}
                 <div>
                     <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>

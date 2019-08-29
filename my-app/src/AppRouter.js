@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import World from './Components/World';
-import Move from './Components/Move';
 import Map from './Components/Map';
 
 
@@ -27,7 +26,6 @@ export default function AppRouter() {
             <Route exact path='/login' component={Login}/>
             <Route path='/home' component={() => window.location.href = 'https:netifysitehere'}/>
             <Route path='/world' component={World}/>
-            <Route path='/move' component={Move}/>
             <Route path='/map' component={Map} />
         </Switch>
     </div>

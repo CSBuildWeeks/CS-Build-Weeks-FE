@@ -13,7 +13,7 @@ class Map extends React.Component {
     
     componentDidMount() {
         this.map();
-        this.move()
+        // this.move() - "moved to World Component"
     }
 
    
@@ -41,26 +41,28 @@ class Map extends React.Component {
             });
     };
 
-    move = (direction) => {
-        const token = localStorage.getItem('token'); 
-        console.log('localstorage in the move', localStorage.getItem('token'))
-        axios({
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
-            method: "POST",
-            headers: {
-                Authorization: token
-            },
-            data: {
-                direction: direction
-            }
-        })
-            .then(res => {
-                console.log('moving data', res.data); 
-            })
-            .catch(err => {
-                console.log('errors', err.response)
-            });
-    };
+    // Moved to World Component
+
+    // move = (direction) => {
+    //     const token = localStorage.getItem('token'); 
+    //     console.log('localstorage in the move', localStorage.getItem('token'))
+    //     axios({
+    //         url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
+    //         method: "POST",
+    //         headers: {
+    //             Authorization: token
+    //         },
+    //         data: {
+    //             direction: direction
+    //         }
+    //     })
+    //         .then(res => {
+    //             console.log('moving data', res.data); 
+    //         })
+    //         .catch(err => {
+    //             console.log('errors', err.response)
+    //         });
+    // };
 
 
 
@@ -76,10 +78,11 @@ class Map extends React.Component {
                          <li>South to: {room.fields.s_to}</li>
                          <li>East to: {room.fields.e_to}</li>
                          <li>West to: {room.fields.w_to}</li>
+                         {/* Buttons moved to World Component
                          <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>
                         <button type="button" className="btn south" onClick={() => this.move('s')}>South</button>
                         <button type="button" className="btn east" onClick={() => this.move('e')}>East</button>
-                        <button type="button" className="btn west" onClick={() => this.move('w')}>West</button>
+                        <button type="button" className="btn west" onClick={() => this.move('w')}>West</button> */}
                      </ul>
                      ))}
                  </div>
