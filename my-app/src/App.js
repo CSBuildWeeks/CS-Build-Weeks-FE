@@ -2,15 +2,17 @@ import './App.css';
 import Register from './Components/Register'
 import React, { Component }  from 'react';
 import AppRouter from '../src/AppRouter';
+import styled from 'styled-components';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+      <Legend><b>
+          Lambda Multi-User Dungeon (MUD)
+          </b></Legend>
       <AppRouter />
-        <p>
-          CS Build Week:  Multi-User Dungeon (MUD)
-        </p>
+      
         <a
           className="Enter-link"
           href="http://localhost:3000/"
@@ -28,3 +30,10 @@ function App() {
 }
 
 export default App;
+
+// Styled Components
+const Legend = styled.legend`
+font-size: 39px;
+margin: 26px;
+color: white;
+`
