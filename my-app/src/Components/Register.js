@@ -47,21 +47,24 @@ const Register = (props) => {
            <div>
    
             <Inputs>
-            <label>Enter Your Username</label>
-                <Inputt type = 'username' name = 'username' onChange = {handleChange} value = {inputs.username} required/>
+            {/* <label>Enter Your Username</label> */}
+                <Inputt                   placeholder="username"
+type = 'username' name = 'username' onChange = {handleChange} value = {inputs.username} required/>
             </Inputs>
             <Inputs>
-            <label>Password1</label>
-                <Inputt type = 'password1' name = 'password1' onChange = {handleChange} value = {inputs.password1} required/>
+            {/* <label>Password1</label> */}
+                <Inputt                   placeholder="password1"
+type = 'password1' name = 'password1' onChange = {handleChange} value = {inputs.password1} required/>
             </Inputs>
             <Inputs>
-            <label>Password2</label>
-                <Inputt type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.password2} required/>
+            {/* <label>Password2</label> */}
+                <Inputt                   placeholder="password2"
+type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.password2} required/>
             </Inputs>
             </div>
             <Button type = 'submit' >Sign Up</Button>
         </Form>
-        <Previous class = "previous">Already Have an Account? <Link to = '/'>Register Here</Link></Previous>
+        <Previous class = "previous">Already Have an Account? <Link to = '/login'>Login Here</Link></Previous>
         </Content>
     )
 }
@@ -75,19 +78,22 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-background: #f1ffff;
+// background: #CAD4DD;
 padding: 5px;
 margin:5px;
 border-radius: 8px;
-color: #1f4852;
+color: #343028;
 font-size: 20px;
 width: 40rem;
 margin-top: 7rem;
+border-bottom: 2px solid #343028;
+
 
 `
 const Legend = styled.legend`
 font-size: 39px;
 margin: 26px;
+color: white;
 `
 
 const Button = styled.button`
@@ -97,25 +103,36 @@ color: white;
 padding: 15px 32px;
 margin: 15px;
 margin-top: 15px;
-background: #3C8C9E
+background: #343028
 font-size: 1rem;
 `
 const Inputs = styled.div`
 margin: 5px;
 display: flex;
 flex-direction: column;
+// border-bottom: 2px solid #343028;
+color: white;
+
 `
 
 const Inputt = styled.input`
-border: solid 1.8px #aacddf;
+// border: solid 1.8px #aacddf;
+// border-radius: 8px;
+// width: 27rem;
+// height: 2rem;
+padding: 0.5em;
+margin: 0.5em;
+color: #343028;
+background: papayawhip;
+border: none;
 border-radius: 8px;
-width: 27rem;
-height: 2rem;
 `
 
 const Span = styled.span`
 margin-bottom: 15px;
 font-size: 19px;
+color: white;
+
 `
 const Content = styled.div`
 display: flex;
@@ -128,6 +145,6 @@ text-align: center;
 margin-top: 30px;
 margin-bottom: 6rem;
 font-size: 18px;
-color: #1f4852
+color: #white;
 
 `
