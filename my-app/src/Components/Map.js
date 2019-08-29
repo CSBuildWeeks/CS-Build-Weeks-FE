@@ -20,7 +20,8 @@ class Map extends React.Component {
     map = () => {
         const token = localStorage.getItem('token'); 
         axios({
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/rooms/`,
+            url: `https://lambdamud-cs.herokuapp.com/api/adv/rooms/`,
+            // url: `https://lambda-mud-test.herokuapp.com/api/adv/rooms/`,
             method: "GET",
             headers: {
                 Authorization: token
