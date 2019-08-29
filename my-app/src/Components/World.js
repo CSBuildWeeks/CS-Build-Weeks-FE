@@ -27,6 +27,7 @@ class World extends React.Component {
     start = () => {
         const token = localStorage.getItem('token'); 
         axios({
+            // url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
             url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
             method: "GET",
             headers: {
@@ -52,6 +53,8 @@ class World extends React.Component {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
+            // uncomment this forheruko enpoint:
+            // url: `https://lambdamud-cs.herokuapp.com/api/adv/move/`,
             url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
             method: "POST",
             headers: {

@@ -13,7 +13,7 @@ function App() {
         </p>
         <a
           className="Enter-link"
-          href="http://localhost:3000/login"
+          href="http://localhost:3000/"
           target="_blank"
           rel="noopener noreferrer"
         >

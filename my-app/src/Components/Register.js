@@ -9,14 +9,20 @@ const Register = (props) => {
     const [inputs, setInputs] = useState({ password1:'', password2:'', username: ''});
 
     const registerUser = (newUser) => {
-        axios.post(`https://lambda-mud-test.herokuapp.com/api/registration/`,newUser)
+        axios.post(
+
+            // uncomment this for heruko endpoint:
+            // `https://lambdamud-cs.herokuapp.com/api/adv/register/`, newUser
+            
+            `https://lambda-mud-test.herokuapp.com/api/registration/`,newUser
+            )
   
         .then(res => {
         //   console.log('response.data.token', response.data.token)
           console.log('response', res)
           const token = res.data.key
           localStorage.setItem('token', `Token ${token}`)
-          props.history.push('/login')
+          props.history.push('/')
         })
   
         .catch(error => {
@@ -64,7 +70,7 @@ type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.
             </div>
             <Button type = 'submit' >Sign Up</Button>
         </Form>
-        <Previous class = "previous">Already Have an Account? <Link to = '/login'>Login Here</Link></Previous>
+        <Previous class = "previous">Already Have an Account? <Link to = '/'>Login Here</Link></Previous>
         </Content>
     )
 }
