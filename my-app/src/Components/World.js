@@ -7,15 +7,14 @@ class World extends React.Component {
     constructor() {
         super();
         this.state = {
-            playerName: "",
+            // playerName: "",
             startingRoom: "",
-            startingPlayers: [],
-            userID:"",
-            startingDescription:"",
-            rooms: [],
+            // startingPlayers: [],
+            // userID:"",
+            startingDesc:"",
             currentRoom: "",
             currentDesc: "",
-            currentPlayers: [],
+            // currentPlayers: [],
     }
 }
     
@@ -27,7 +26,7 @@ class World extends React.Component {
     start = () => {
         const token = localStorage.getItem('token'); 
         axios({
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
+            url: `https://lambdamud-cs.herokuapp.com/api/adv/rooms/`,
             method: "GET",
             headers: {
                 Authorization: token
@@ -35,13 +34,13 @@ class World extends React.Component {
         })
             .then(res => {
                 this.setState({ 
-                    playerName: res.data.name,
-                    startingRoom: res.data.title,
-                    startingPlayers: res.data.players,
-                    userID: res.data.uuid,
-                    startingDescription: res.data.description,
+                    // playerName: res.data.name,
+                    startingRoom: res.data.rooms[0].title,
+                    // startingPlayers: res.data.players,
+                    // userID: res.data.uuid,
+                    startingDesc: res.data.rooms[0].description,
                 }); 
-                console.log('res in the world', res)  
+                console.log('res in the world', res.data.rooms)  
             })
             .catch(err => {
                 console.log('errors', err.response)
@@ -52,7 +51,7 @@ class World extends React.Component {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
+            url: `https://lambdamud-cs.herokuapp.com/api/adv/move/`,
             method: "POST",
             headers: {
                 Authorization: token
@@ -66,8 +65,6 @@ class World extends React.Component {
                 this.setState({
                     currentRoom: res.data.title,
                     currentDesc: res.data.description,
-                    currentPlayers: res.data.players
-
                 })
             })
             .catch(err => {
@@ -83,19 +80,15 @@ class World extends React.Component {
                 ? 
                 <div>
                     <h2>You have moved to: </h2>
-                    <p>{this.state.currentRoom}</p>
-                    <p>{this.state.currentDesc}</p>
-                    <p>Current players in this room: </p>
-                    <div>{this.state.currentPlayers.map(player =>(<li>{player}</li>))}</div>
+                    {<p>{this.state.currentRoom}</p>}
+                    {<p>{this.state.currentDesc}</p>}
+
                 </div> 
                 :
                 <div className='startRoom'>
                     <h2>Starting Room: </h2>
-                    <p>Player ID: {this.state.userID}</p>
-                    <p>Player: {this.state.playerName}</p>
                     <p>Room: {this.state.startingRoom}</p>
-                    <p>{this.state.startingDescription}</p>
-                    <div>Players currently in the room: {this.state.startingPlayers.map(player =>(<li>{player}</li>))}</div>  
+                    <p>{this.state.startingDesc}</p>
                 </div>}
                 <div>
                     <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>
@@ -109,19 +102,9 @@ class World extends React.Component {
     }
 };
 
-export default World;       {/* <Link to='/move'>
-      <button type="button" className="btn north">North</button>
-      </Link>
-      <Link to='/'>
-      <button type="button" className="btn south">South</button>
-      </Link>
-      <Link to='/move'>
-      <button type="button" className="btn east">East</button>
-      </Link>
-      <Link to='/move'>
-      <button type="button" className="btn west">West</button>
-      </Link>
-      </div> */}
+export default World;
 
+{/* <p>Current players in this room: </p>
+<div>{this.state.currentPlayers.map(player =>(<li>{player}</li>))}</div> */}
 
-      // 1. How to show the information for ONLY current room, with ROOM ID
+{/* <div>Players currently in the room: {this.state.startingPlayers.map(player =>(<li>{player}</li>))}</div>   */}
