@@ -1,4 +1,4 @@
 [build] 
-base="cs"
+base="cs/"
 publish="cs/build/"
 command="yarn build"
