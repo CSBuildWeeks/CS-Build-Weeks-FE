@@ -1,16 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 
+// Use this component to draw the map with a for loop
 
 class Map extends React.Component {
     constructor() {
         super();
         this.state = {
             rooms : [],
-            // roomID: [],
-            // roomTitle: [],
-            // roomDesc: []
-
     }
 }
     
@@ -32,9 +29,6 @@ class Map extends React.Component {
             .then(res => {
                 this.setState({ 
                     rooms: JSON.parse(res.data.rooms),
-                    // roomID: JSON.parse(res.data.rooms.pk),
-                    // roomTitle: JSON.parse(res.data.rooms.fields.title),
-                    // roomDesc: JSON.parse(res.data.rooms.fields.description)
                     // id: res.data.rooms.pk,
                     // roomTitle: res.data.rooms.fields.title,
                     // roomDesc: res.data.rooms.fields.description
@@ -73,27 +67,22 @@ class Map extends React.Component {
     render(){
         return(
             <div>
-                {/* <li>{this.state.id}</li>
-                <li>{this.state.roomTitle}</li>
-                <li>{this.state.roomDesc}</li> */}
-                {/* <div>{this.state.rooms}</div> */}
-                <div>{this.state.rooms.map(room => (
-                    <ul>
-                        <li>ID: {room.pk}</li>
-                        <li>Name: {room.fields.title}</li>
-                        <li>Description: {room.fields.description}</li>
-                        <li>North to: {room.fields.n_to}</li>
-                        <li>South to: {room.fields.s_to}</li>
-                        <li>East to: {room.fields.e_to}</li>
-                        <li>West to: {room.fields.w_to}</li>
-                        <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>
+                 <div>{this.state.rooms.map(room => (
+                     <ul>
+                         <li>ID: {room.pk}</li>
+                         <li>Name: {room.fields.title}</li>
+                         <li>Description: {room.fields.description}</li>
+                         <li>North to: {room.fields.n_to}</li>
+                         <li>South to: {room.fields.s_to}</li>
+                         <li>East to: {room.fields.e_to}</li>
+                         <li>West to: {room.fields.w_to}</li>
+                         <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>
                         <button type="button" className="btn south" onClick={() => this.move('s')}>South</button>
                         <button type="button" className="btn east" onClick={() => this.move('e')}>East</button>
                         <button type="button" className="btn west" onClick={() => this.move('w')}>West</button>
-                    </ul>
-                    ))}
-                </div>
-
+                     </ul>
+                     ))}
+                 </div>
             </div>
         )
     }
@@ -101,9 +90,15 @@ class Map extends React.Component {
 
 export default Map;
 
-//model: "adventure room"
-//pk:
-//fields: title: description:
-//n_to, s_to, w_to, e_to ... etc...
+// {/* <li>{this.state.id}</li>
+//                 
 
-//Function with algorithm to determine position of the room 
+
+
+
+// Maybe the room api (model, pk(id), fields.title(name), fields.description(description),
+// moving directions) ..is for the positioning when mapping later? maybe when that room is reached, a bigger description is given
+
+// I want the move data (name, title, description, players) in order to move and render room descriptions with players
+
+//Lets render single buttons 
