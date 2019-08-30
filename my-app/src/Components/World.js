@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 
 class World extends React.Component {
@@ -12,6 +13,7 @@ class World extends React.Component {
             // startingPlayers: [],
             // userID:"",
             startingDesc:"",
+            // rooms: [],
             currentRoom: "",
             currentDesc: "",
             // currentPlayers: [],
@@ -26,7 +28,9 @@ class World extends React.Component {
     start = () => {
         const token = localStorage.getItem('token'); 
         axios({
+            // uncomment when ready for deploy api
             url: `https://lambdamud-cs.herokuapp.com/api/adv/rooms/`,
+            // url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
             method: "GET",
             headers: {
                 Authorization: token
@@ -37,7 +41,8 @@ class World extends React.Component {
                     // playerName: res.data.name,
                     startingRoom: res.data.rooms[0].title,
                     // startingPlayers: res.data.players,
-                    // userID: res.data.uuid,
+                    userID: res.data.uuid,
+                    // startingDesc: res.data.description,
                     startingDesc: res.data.rooms[0].description,
                 }); 
                 console.log('res in the world', res.data.rooms)  
@@ -51,7 +56,9 @@ class World extends React.Component {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
+            // uncomment this for heruko enpoint:
             url: `https://lambdamud-cs.herokuapp.com/api/adv/move/`,
+            // url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
             method: "POST",
             headers: {
                 Authorization: token
@@ -65,6 +72,7 @@ class World extends React.Component {
                 this.setState({
                     currentRoom: res.data.title,
                     currentDesc: res.data.description,
+                    // currentPlayers: res.data.players
                 })
             })
             .catch(err => {
@@ -75,20 +83,30 @@ class World extends React.Component {
     // Shorthand for If currentRoom then show currentRoom, if not then show startingRoom info
     render(){
         return(
-           <div> 
+           <Form>
+        <Legendd>
+        {/* <b> */}
+          Lambda Multi-User Dungeon (MUD)
+          {/* </b> */}
+        </Legendd>
+
                 {this.state.currentRoom 
                 ? 
                 <div>
-                    <h2>You have moved to: </h2>
-                    {<p>{this.state.currentRoom}</p>}
-                    {<p>{this.state.currentDesc}</p>}
-
+                    <Legend>You have moved to: </Legend>
+                    <p>{this.state.currentRoom}</p>
+                    <p>{this.state.currentDesc}</p>
+                    {/* <p>Current players in this room: </p>
+                    <div>{this.state.currentPlayers.map(player =>(<li>{player}</li>))}</div> */}
                 </div> 
                 :
                 <div className='startRoom'>
-                    <h2>Starting Room: </h2>
-                    <p>Room: {this.state.startingRoom}</p>
-                    <p>{this.state.startingDesc}</p>
+                    <Legend>Starting Room: </Legend>
+                    {/* <Span>Player ID: {this.state.userID}</Span>
+                    <p>Player: {this.state.playerName}</p> */}
+                    <Span>Room: {this.state.startingRoom}</Span>
+                    <p>{this.state.startingDescription}</p>
+                    {/* <div>Players currently in the room: {this.state.startingPlayers.map(player =>(<li>{player}</li>))}</div>   */}
                 </div>}
                 <div>
                     <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>
@@ -96,7 +114,7 @@ class World extends React.Component {
                     <button type="button" className="btn east" onClick={() => this.move('e')}>East</button>
                     <button type="button" className="btn west" onClick={() => this.move('w')}>West</button>
                 </div>
-            </div>
+            </Form>
         )
         
     }
@@ -107,4 +125,37 @@ export default World;
 {/* <p>Current players in this room: </p>
 <div>{this.state.currentPlayers.map(player =>(<li>{player}</li>))}</div> */}
 
-{/* <div>Players currently in the room: {this.state.startingPlayers.map(player =>(<li>{player}</li>))}</div>   */}
+      // 1. How to show the information for ONLY current room, with ROOM ID
+
+const Form = styled.form`
+width: 40rem;
+margin-top: 1rem;
+height: 20rem;
+border-radius: 8px;
+border: 1px solid white;
+`
+const Span = styled.span`
+margin-bottom: 15px;
+font-size: 19px;
+color: white;
+`
+
+const Legend = styled.legend`
+font-size: 39px;
+margin: 26px;
+color: white;
+border: 1px solid white;
+`
+
+// Styled Components
+const Legendd = styled.legend`
+display: contents;
+width: 40rem;
+height: 5rem;
+font-size: 39px;
+margin: 26px;
+color: white;
+border-radius: 8px;
+border: 1px solid white;
+padding-top: 2rem;
+`

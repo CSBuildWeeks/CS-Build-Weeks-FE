@@ -9,14 +9,20 @@ const Register = (props) => {
     const [inputs, setInputs] = useState({ password1:'', password2:'', username: ''});
 
     const registerUser = (newUser) => {
-        axios.post(`https://lambdamud-cs.herokuapp.com/api/registration/`, newUser)
+        axios.post(
+
+            // uncomment this for heruko endpoint:
+            `https://lambdamud-cs.herokuapp.com/api/registration/`, newUser
+            
+            // `https://lambda-mud-test.herokuapp.com/api/registration/`,newUser
+            )
   
         .then(res => {
         //   console.log('response.data.token', response.data.token)
           console.log('response', res)
           const token = res.data.key
           localStorage.setItem('token', `Token ${token}`)
-          props.history.push('/login')
+          props.history.push('/')
         })
   
         .catch(error => {
@@ -64,7 +70,7 @@ type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.
             </div>
             <Button type = 'submit' >Sign Up</Button>
         </Form>
-        <Previous class = "previous">Already Have an Account? <Link to = '/login'>Login Here</Link></Previous>
+        <Previous class = "previous">Already Have an Account? <Link to = '/'>Login Here</Link></Previous>
         </Content>
     )
 }
@@ -78,7 +84,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-// background: #CAD4DD;
 padding: 5px;
 margin:5px;
 border-radius: 8px;
@@ -87,8 +92,6 @@ font-size: 20px;
 width: 40rem;
 margin-top: 7rem;
 border-bottom: 2px solid #343028;
-
-
 `
 const Legend = styled.legend`
 font-size: 39px;
@@ -110,16 +113,10 @@ const Inputs = styled.div`
 margin: 5px;
 display: flex;
 flex-direction: column;
-// border-bottom: 2px solid #343028;
 color: white;
-
 `
 
 const Inputt = styled.input`
-// border: solid 1.8px #aacddf;
-// border-radius: 8px;
-// width: 27rem;
-// height: 2rem;
 padding: 0.5em;
 margin: 0.5em;
 color: #343028;
@@ -132,7 +129,6 @@ const Span = styled.span`
 margin-bottom: 15px;
 font-size: 19px;
 color: white;
-
 `
 const Content = styled.div`
 display: flex;
@@ -146,5 +142,4 @@ margin-top: 30px;
 margin-bottom: 6rem;
 font-size: 18px;
 color: #white;
-
 `

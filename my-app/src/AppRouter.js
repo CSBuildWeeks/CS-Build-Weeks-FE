@@ -23,8 +23,7 @@ export default function AppRouter() {
     return <div className="page-view-ui">
         <Switch>
             <Route path='/register' component={Register}/>
-            <Route exact path='/login' component={Login}/>
-            <Route path='/home' component={() => window.location.href = 'https:netifysitehere'}/>
+            <Route exact path='/' component={Login}/>
             <Route path='/world' component={World}/>
             <Route path='/map' component={Map} />
         </Switch>
