@@ -83,7 +83,13 @@ class World extends React.Component {
     // Shorthand for If currentRoom then show currentRoom, if not then show startingRoom info
     render(){
         return(
-           <Form> 
+           <Form>
+        <Legendd>
+        {/* <b> */}
+          Lambda Multi-User Dungeon (MUD)
+          {/* </b> */}
+        </Legendd>
+
                 {this.state.currentRoom 
                 ? 
                 <div>
@@ -134,7 +140,7 @@ export default World;       {/* <Link to='/move'>
 const Form = styled.form`
 width: 40rem;
 margin-top: 1rem;
-height: 15rem;
+height: 20rem;
 border-radius: 8px;
 border: 1px solid white;
 `
@@ -151,3 +157,15 @@ color: white;
 border: 1px solid white;
 `
 
+// Styled Components
+const Legendd = styled.legend`
+display: contents;
+width: 40rem;
+height: 5rem;
+font-size: 39px;
+margin: 26px;
+color: white;
+border-radius: 8px;
+border: 1px solid white;
+padding-top: 2rem;
+`

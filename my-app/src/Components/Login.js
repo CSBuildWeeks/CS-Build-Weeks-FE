@@ -147,7 +147,6 @@ const Inputs = styled.div`
 margin: 5px;
 display: flex;
 flex-direction: column;
-// border-bottom: 2px solid #343028;
 color: white;
 
 `
@@ -159,10 +158,6 @@ color: #white;
 
 `
 const Inputt = styled.input`
-// border: solid 1.8px #aacddf;
-// border-radius: 8px;
-// width: 27rem;
-// height: 2rem;
 padding: 0.5em;
 margin: 0.5em;
 color: #343028;
@@ -189,6 +184,4 @@ margin-top: 30px;
 margin-bottom: 6rem;
 font-size: 18px;
 color: #white;
-
 `
-
