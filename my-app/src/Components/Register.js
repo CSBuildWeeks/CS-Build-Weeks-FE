@@ -67,9 +67,12 @@ type = 'password1' name = 'password1' onChange = {handleChange} value = {inputs.
                 <Inputt                   placeholder="password2"
 type = 'password2' name = 'password2' onChange = {handleChange} value = {inputs.password2} required/>
             </Inputs>
+
             </div>
             <Button type = 'submit' >Sign Up</Button>
         </Form>
+        <Span2>Hint: Password must be 8 characters long</Span2>
+
         <Previous class = "previous">Already Have an Account? <Link to = '/'>Login Here</Link></Previous>
         </Content>
     )
@@ -130,6 +133,12 @@ margin-bottom: 15px;
 font-size: 19px;
 color: white;
 `
+const Span2 = styled.span`
+margin-bottom: 15px;
+font-size: 15px;
+color: white;
+`
+
 const Content = styled.div`
 display: flex;
 flex-direction: column;
@@ -138,7 +147,7 @@ align-items: center;
 
 const Previous = styled.div`
 text-align: center;
-margin-top: 30px;
+margin-top: 10px;
 margin-bottom: 6rem;
 font-size: 18px;
 color: #white;
