@@ -1,21 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 
 class World extends React.Component {
     constructor() {
         super();
         this.state = {
-            playerName: "",
+            // playerName: "",
             startingRoom: "",
-            startingPlayers: [],
-            userID:"",
-            startingDescription:"",
-            rooms: [],
+            // startingPlayers: [],
+            // userID:"",
+            startingDesc:"",
+            // rooms: [],
             currentRoom: "",
             currentDesc: "",
-            currentPlayers: [],
+            // currentPlayers: [],
     }
 }
     
@@ -27,8 +28,9 @@ class World extends React.Component {
     start = () => {
         const token = localStorage.getItem('token'); 
         axios({
+            // uncomment when ready for deploy api
+            url: `https://lambdamud-cs.herokuapp.com/api/adv/rooms/`,
             // url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/init`,
             method: "GET",
             headers: {
                 Authorization: token
@@ -36,13 +38,14 @@ class World extends React.Component {
         })
             .then(res => {
                 this.setState({ 
-                    playerName: res.data.name,
-                    startingRoom: res.data.title,
-                    startingPlayers: res.data.players,
+                    // playerName: res.data.name,
+                    startingRoom: res.data.rooms[0].title,
+                    // startingPlayers: res.data.players,
                     userID: res.data.uuid,
-                    startingDescription: res.data.description,
+                    // startingDesc: res.data.description,
+                    startingDesc: res.data.rooms[0].description,
                 }); 
-                console.log('res in the world', res)  
+                console.log('res in the world', res.data.rooms)  
             })
             .catch(err => {
                 console.log('errors', err.response)
@@ -53,9 +56,9 @@ class World extends React.Component {
         const token = localStorage.getItem('token'); 
         console.log('localstorage in the move', localStorage.getItem('token'))
         axios({
-            // uncomment this forheruko enpoint:
-            // url: `https://lambdamud-cs.herokuapp.com/api/adv/move/`,
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
+            // uncomment this for heruko enpoint:
+            url: `https://lambdamud-cs.herokuapp.com/api/adv/move/`,
+            // url: `https://lambda-mud-test.herokuapp.com/api/adv/move/`,
             method: "POST",
             headers: {
                 Authorization: token
@@ -69,8 +72,7 @@ class World extends React.Component {
                 this.setState({
                     currentRoom: res.data.title,
                     currentDesc: res.data.description,
-                    currentPlayers: res.data.players
-
+                    // currentPlayers: res.data.players
                 })
             })
             .catch(err => {
@@ -81,24 +83,30 @@ class World extends React.Component {
     // Shorthand for If currentRoom then show currentRoom, if not then show startingRoom info
     render(){
         return(
-           <div> 
+           <Form>
+        <Legendd>
+        {/* <b> */}
+          Lambda Multi-User Dungeon (MUD)
+          {/* </b> */}
+        </Legendd>
+
                 {this.state.currentRoom 
                 ? 
                 <div>
-                    <h2>You have moved to: </h2>
+                    <Legend>You have moved to: </Legend>
                     <p>{this.state.currentRoom}</p>
                     <p>{this.state.currentDesc}</p>
-                    <p>Current players in this room: </p>
-                    <div>{this.state.currentPlayers.map(player =>(<li>{player}</li>))}</div>
+                    {/* <p>Current players in this room: </p>
+                    <div>{this.state.currentPlayers.map(player =>(<li>{player}</li>))}</div> */}
                 </div> 
                 :
                 <div className='startRoom'>
-                    <h2>Starting Room: </h2>
-                    <p>Player ID: {this.state.userID}</p>
-                    <p>Player: {this.state.playerName}</p>
-                    <p>Room: {this.state.startingRoom}</p>
+                    <Legend>Starting Room: </Legend>
+                    {/* <Span>Player ID: {this.state.userID}</Span>
+                    <p>Player: {this.state.playerName}</p> */}
+                    <Span>Room: {this.state.startingRoom}</Span>
                     <p>{this.state.startingDescription}</p>
-                    <div>Players currently in the room: {this.state.startingPlayers.map(player =>(<li>{player}</li>))}</div>  
+                    {/* <div>Players currently in the room: {this.state.startingPlayers.map(player =>(<li>{player}</li>))}</div>   */}
                 </div>}
                 <div>
                     <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>
@@ -106,7 +114,7 @@ class World extends React.Component {
                     <button type="button" className="btn east" onClick={() => this.move('e')}>East</button>
                     <button type="button" className="btn west" onClick={() => this.move('w')}>West</button>
                 </div>
-            </div>
+            </Form>
         )
         
     }
@@ -128,3 +136,36 @@ export default World;       {/* <Link to='/move'>
 
 
       // 1. How to show the information for ONLY current room, with ROOM ID
+
+const Form = styled.form`
+width: 40rem;
+margin-top: 1rem;
+height: 20rem;
+border-radius: 8px;
+border: 1px solid white;
+`
+const Span = styled.span`
+margin-bottom: 15px;
+font-size: 19px;
+color: white;
+`
+
+const Legend = styled.legend`
+font-size: 39px;
+margin: 26px;
+color: white;
+border: 1px solid white;
+`
+
+// Styled Components
+const Legendd = styled.legend`
+display: contents;
+width: 40rem;
+height: 5rem;
+font-size: 39px;
+margin: 26px;
+color: white;
+border-radius: 8px;
+border: 1px solid white;
+padding-top: 2rem;
+`

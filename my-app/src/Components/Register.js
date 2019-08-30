@@ -12,9 +12,9 @@ const Register = (props) => {
         axios.post(
 
             // uncomment this for heruko endpoint:
-            // `https://lambdamud-cs.herokuapp.com/api/adv/register/`, newUser
+            `https://lambdamud-cs.herokuapp.com/api/registration/`, newUser
             
-            `https://lambda-mud-test.herokuapp.com/api/registration/`,newUser
+            // `https://lambda-mud-test.herokuapp.com/api/registration/`,newUser
             )
   
         .then(res => {
@@ -84,7 +84,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-// background: #CAD4DD;
 padding: 5px;
 margin:5px;
 border-radius: 8px;
@@ -93,8 +92,6 @@ font-size: 20px;
 width: 40rem;
 margin-top: 7rem;
 border-bottom: 2px solid #343028;
-
-
 `
 const Legend = styled.legend`
 font-size: 39px;
@@ -116,16 +113,10 @@ const Inputs = styled.div`
 margin: 5px;
 display: flex;
 flex-direction: column;
-// border-bottom: 2px solid #343028;
 color: white;
-
 `
 
 const Inputt = styled.input`
-// border: solid 1.8px #aacddf;
-// border-radius: 8px;
-// width: 27rem;
-// height: 2rem;
 padding: 0.5em;
 margin: 0.5em;
 color: #343028;
@@ -138,7 +129,6 @@ const Span = styled.span`
 margin-bottom: 15px;
 font-size: 19px;
 color: white;
-
 `
 const Content = styled.div`
 display: flex;
@@ -152,5 +142,4 @@ margin-top: 30px;
 margin-bottom: 6rem;
 font-size: 18px;
 color: #white;
-
 `
