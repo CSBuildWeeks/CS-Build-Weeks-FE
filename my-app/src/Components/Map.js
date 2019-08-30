@@ -22,9 +22,9 @@ class Map extends React.Component {
         axios({
             
             // uncomment this for heruko endpoint:
-            // url: `https://lambdamud-cs.herokuapp.com/api/adv/rooms/`,
+            url: `https://lambdamud-cs.herokuapp.com/api/adv/rooms/`,
 
-            url: `https://lambda-mud-test.herokuapp.com/api/adv/rooms/`,
+            // url: `https://lambda-mud-test.herokuapp.com/api/adv/rooms/`,
             method: "GET",
             headers: {
                 Authorization: token
@@ -32,7 +32,11 @@ class Map extends React.Component {
         })
             .then(res => {
                 this.setState({ 
-                    rooms: JSON.parse(res.data.rooms),
+                    rooms: res.data.rooms,
+                    // rooms: JSON.parse(res.data.rooms),
+                    // uncomment for deployed:
+                    // rooms: res.data.room),
+
                     // id: res.data.rooms.pk,
                     // roomTitle: res.data.rooms.fields.title,
                     // roomDesc: res.data.rooms.fields.description
@@ -75,13 +79,17 @@ class Map extends React.Component {
             <div>
                  <div>{this.state.rooms.map(room => (
                      <ul>
-                         <li>ID: {room.pk}</li>
-                         <li>Name: {room.fields.title}</li>
-                         <li>Description: {room.fields.description}</li>
-                         <li>North to: {room.fields.n_to}</li>
-                         <li>South to: {room.fields.s_to}</li>
-                         <li>East to: {room.fields.e_to}</li>
-                         <li>West to: {room.fields.w_to}</li>
+                         <li>ID: {room.id}</li>
+                         <li>Name: {room.title}</li>
+                         {/* <li>ID: {room.pk}</li> */}
+                         {/* <li>Name: {room.fields.title}</li> */}
+                         {/* <li>Description: {room.fields.description}</li> */}
+                         <li>Description: {room.description}</li>
+                         {/* for test add room.fields.n_to */}
+                         <li>North to: {room.n_to}</li>
+                         <li>South to: {room.s_to}</li>
+                         <li>East to: {room.e_to}</li>
+                         <li>West to: {room.w_to}</li>
                          {/* Buttons moved to World Component
                          <button type="button" className="btn north" onClick={() => this.move('n')}>North</button>
                         <button type="button" className="btn south" onClick={() => this.move('s')}>South</button>

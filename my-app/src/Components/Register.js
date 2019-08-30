@@ -12,9 +12,9 @@ const Register = (props) => {
         axios.post(
 
             // uncomment this for heruko endpoint:
-            // `https://lambdamud-cs.herokuapp.com/api/adv/register/`, newUser
+            `https://lambdamud-cs.herokuapp.com/api/registration/`, newUser
             
-            `https://lambda-mud-test.herokuapp.com/api/registration/`,newUser
+            // `https://lambda-mud-test.herokuapp.com/api/registration/`,newUser
             )
   
         .then(res => {

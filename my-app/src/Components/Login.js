@@ -35,9 +35,9 @@ export default function Login(props) {
         axios.post(
 
         // uncomment this for heruko endpoint:
-        // `https://lambdamud-cs.herokuapp.com/api/adv/login/`, user
+        `https://lambdamud-cs.herokuapp.com/api/login/`, user
           
-        `https://lambda-mud-test.herokuapp.com/api/login/`, user
+        // `https://lambda-mud-test.herokuapp.com/api/login/`, user
           )
           .then(res => {
               console.log(res.data);
